@@ -69,9 +69,48 @@ ul {
       opacity: 1;
       transform: translate3d(0px, -50%, 0); }
 
+@media screen and (max-width: 600px) {
+  .helper {
+    font-size: 1em; }
+  table {
+    border: 0; }
+  table caption {
+    font-size: 1.3em; }
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px; }
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em; }
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right; }
+  table td::before {
+    /*
+      * aria-label has no advantage, it won't be read inside a table
+      content: attr(aria-label);
+      */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase; }
+  table td:last-child {
+    border-bottom: 0; } }
+
 @media screen and (max-width: 300px) {
   body {
     padding-left: 0; }
+  .helper {
+    font-size: 0.5em; }
   .menu {
     width: 230px;
     box-shadow: 0 0 0 100em rgba(0, 0, 0, 0);
@@ -109,16 +148,13 @@ main {
   position: relative;
   height: 100vh; }
   main .helper {
-    color: white;
     position: relative;
     top: 50%;
     left: 50%;
     transform: translate3d(-50%, -50%, 0);
-    padding: 1.2em 2em;
     text-align: center;
     border-radius: 20px;
-    font-size: 2em;
-    font-weight: bold; }
+    font-size: 1.3em; }
 
 table {
   border-collapse: collapse;
@@ -146,46 +182,14 @@ table th {
   letter-spacing: .1em;
   text-transform: uppercase; }
 
-@media screen and (max-width: 600px) {
-  table {
-    border: 0; }
-  table caption {
-    font-size: 1.3em; }
-  table thead {
-    border: none;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px; }
-  table tr {
-    border-bottom: 3px solid #ddd;
-    display: block;
-    margin-bottom: .625em; }
-  table td {
-    border-bottom: 1px solid #ddd;
-    display: block;
-    font-size: .8em;
-    text-align: right; }
-  table td::before {
-    /*
-      * aria-label has no advantage, it won't be read inside a table
-      content: attr(aria-label);
-      */
-    content: attr(data-label);
-    float: left;
-    font-weight: bold;
-    text-transform: uppercase; }
-  table td:last-child {
-    border-bottom: 0; } }
-
 .tD {
-  color: #e33424; }
+  color: #e33424;
+  font-weight: bold; }
 
 .iP {
-  color: #fa9239; }
+  color: #fa9239;
+  font-weight: bold; }
 
 .f {
-  color: #46ce9f; }
+  color: #46ce9f;
+  font-weight: bold; }
