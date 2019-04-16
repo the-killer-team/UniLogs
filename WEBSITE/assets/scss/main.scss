@@ -1,0 +1,276 @@
+$w: rgb(255, 255, 255);
+$y: rgb(248, 182, 0);
+$b: rgb(21, 49, 123);
+$bl: rgb(72, 145, 227);
+$r: rgb(227, 52, 36);
+$o: rgb(250, 146, 57);
+$g: rgb(70, 206, 159);
+$gr: rgb(45, 45, 45);
+
+$menu-width: 90px;
+$menu-width-smartphone: 230px;
+
+$icon-url-dashboard: "../img/icons/dashboard.svg";
+$icon-url-add: "../img/icons/add.svg";
+$icon-url-edit: "../img/icons/edit.svg";
+$icon-url-delete: "../img/icons/delete.svg";
+$logo: "../img/master.svg";
+$logow: "../img/logo-white.svg";
+
+body {
+    margin: 0;
+    background-color: $b;
+    padding-left: $menu-width;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#menu {
+	background: $y;
+	height: 100vh;
+	width: $menu-width;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 5;
+    outline: none;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding:0.5em 0;
+
+    li {
+        padding: 0.5em 1em 0.5em 3em;
+        font-size: 0.95em;
+        background-repeat: no-repeat;
+        transition: all 0.15s linear;
+        cursor: pointer;
+        height: $menu-width/1.5;
+        background-position: center center;
+        background-size: 30px auto;
+        position: relative;
+
+        &.icon-logo {
+            background-image: url($logow);
+            background-size: 95%;
+            cursor: auto;
+            font-size: 1.4em;
+        }
+        &.icon-dashboard {
+            background-image: url($icon-url-dashboard);
+        }
+        &.icon-add {
+            background-image: url($icon-url-add);
+        }
+        &.icon-update {
+            background-image: url($icon-url-edit);
+        }
+        &.icon-delete {
+            background-image: url($icon-url-delete);
+        }
+        
+        &:focus{
+            outline: none;
+        }
+
+        span {
+            //display:none;
+            opacity: 0;
+            position: absolute;
+            background: rgba(0,0,0,0.5);
+            padding: 0.2em 0.5em;
+            border-radius: 4px;
+            top: 50%;
+            left: $menu-width - 10px;
+            transform: translate3d(-15px,-50%, 0);
+            transition: all 0.15s ease-in-out;
+            color: $w;
+            
+            &:before{
+                content:'';
+                width: 0;
+                height: 0;
+                position: absolute;
+                top: 50%;
+                left: -5px;
+                border-top: 5px solid transparent;
+                border-bottom: 5px solid transparent;
+                border-right: 5px solid rgba(0,0,0,0.5);
+                transform: translateY(-50%);
+            }
+        }
+        
+        &:hover{
+            span{
+                opacity: 1;
+                transform: translate3d(0px,-50%, 0);
+            }
+        }
+    }
+}
+
+@media screen and (max-width:300px) {
+	body{
+		padding-left:0;
+	}
+	
+	.menu {
+		width: $menu-width-smartphone;
+		box-shadow: 0 0 0 100em rgba(0,0,0,0);
+		transform: translate3d(-$menu-width-smartphone,0,0);
+		transition: all 0.3s ease-in-out;
+		
+		.smartphone-menu-trigger {
+			width: 40px;
+			height: 40px;
+			position: absolute;
+			left: 100%;
+			background: $y;
+			
+			&:before, &:after {
+				content:'';
+				width: 50%;
+				height: 2px;
+				background: #fff;
+				border-radius: 10px;
+				position: absolute;
+				top: 45%;
+				left: 50%;
+				transform: translate3d(-50%, -50%, 0);
+			}
+			
+			&:after{
+				top: 55%;
+				transform: translate3d(-50%, -50%, 0);
+			}
+		}
+		
+		ul {
+			
+			li {
+				padding: 1em 1em 1em 3em;
+				font-size: 1.2em;
+			}
+		}
+		
+		&:focus {
+			transform: translate3d(0,0,0);
+			box-shadow: 0 0 0 100em rgba(0,0,0,0.6);
+			
+			.smartphone-menu-trigger {
+				pointer-events: none;
+			}
+		}
+	}
+}
+
+main {
+	position: relative;
+	height: 100vh;
+	
+	.helper {
+		color: $w;
+		position: relative;
+		top: 50%;
+		left: 50%;
+		transform: translate3d(-50%,-50%,0);
+		padding: 1.2em 2em;
+		text-align: center;
+		border-radius: 20px;
+		font-size: 2em;
+		font-weight: bold;
+	}
+}
+
+table {
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    table-layout: fixed;
+    display: inline-block;
+}
+  
+table caption {
+    font-size: 1.5em;
+    margin: .5em 0 .75em;
+}
+  
+table tr {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: .35em;
+}
+  
+table th,
+table td {
+    padding: .625em;
+    text-align: center;
+}
+  
+table th {
+    font-size: .85em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+  
+@media screen and (max-width: 600px) {
+    table {
+      border: 0;
+    }
+  
+    table caption {
+      font-size: 1.3em;
+    }
+    
+    table thead {
+      border: none;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+    
+    table tr {
+      border-bottom: 3px solid #ddd;
+      display: block;
+      margin-bottom: .625em;
+    }
+    
+    table td {
+      border-bottom: 1px solid #ddd;
+      display: block;
+      font-size: .8em;
+      text-align: right;
+    }
+    
+    table td::before {
+      /*
+      * aria-label has no advantage, it won't be read inside a table
+      content: attr(aria-label);
+      */
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    
+    table td:last-child {
+      border-bottom: 0;
+    }
+}
+
+.tD {
+    color: $r;
+}
+
+.iP {
+    color: $o;
+}
+
+.f {
+    color: $g;
+}
