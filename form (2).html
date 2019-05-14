@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+    <title>Ulogs</title>
+    <style>
+        
+			#error{
+			
+				background-color: tomato;
+				width: 100%;
+				color: rgb(22, 20, 20);
+				padding: 5px 5px;
+				display: none;
+			      }
+                 
+    	    .error{
+				background-color: tomato;
+				border: 1px solid red;
+		     	}
+            
+       
+    </style>
+    <script language="javascript">
+    
+    function init(){
+        document.formValid.title.className = "";
+        document.formValid.content.className = "";
+        document.formValid.picture.className = "";
+        document.formValid.idCategory.className = "";
+        document.getElementById("error").innerHTML = "";
+        document.getElementById("correct").innerHTML = "";
+    }
+    function valider()
+  
+    {
+        init();
+             /* verification du titre*/
+                var title = document.formValid.title.value;
+                if(title == ''){
+                    document.getElementById("error").innerHTML += "<p>Le titre n'est pas rempli.</p>";
+                    document.getElementById('error').style.display = "block";
+                    document.formValid.title.className = "error";
+                }
+                else if(title.length < 7){
+                    document.getElementById("error").innerHTML += "<p>Le titre est trop court.</p>";
+                    document.getElementById('error').style.display = "block";
+                    document.formValid.title.className = "error";
+                }
+                else {
+                   
+                    document.getElementById("correct").innerHTML += "<p>titre validé</p>";
+                    document.getElementById('correct').style.display += "block";
+                  
+                
+                }
+                
+             
+                /* verification du contenue */
+                var content = document.formValid.content.value;
+                if(content == ''){
+                    document.getElementById("error").innerHTML += "<p>Le  contenu n'est pas rempli.</p>";
+                    document.getElementById('error').style.display = "block";
+                    document.formValid.content.className = "error";                                 
+                }
+               
+                 else if(content.length < 240){
+                    document.getElementById("error").innerHTML += "<p>Le  contenu est trop court .</p>";
+                    document.getElementById('error').style.display = "block";
+                    document.formValid.content.className = "error";                                 
+                }
+                else{
+                    document.getElementById("correct").innerHTML += "<p>contenu validé</p>";
+                     
+                 }
+
+                 /* verification de l'image */
+                 var picture = document.formValid.picture.value;
+               if(picture == ''){
+
+                document.getElementById("error").innerHTML += "<p>ajoutez une image.</p>";
+                    document.getElementById('error').style.display = "block";
+                    document.formValid.picture.className = "error";
+
+               }
+               else {
+                   
+                   document.getElementById("correct").innerHTML += "<p>image envoyée</p>";
+                  
+                 
+               
+               }
+              
+              
+    
+    }
+    
+    </script>
+</head>
+<body>
+    <form name="formValid" onsubmit="valider();return false;">
+        <div>
+            <label for="title">Titre :</label><br />
+            <input type="text" id="title" name="title">
+        </div>
+
+        <div>
+            <label for="content">Contenu :</label><br />
+            <input type="text" id="content" name="content">
+        </div>
+
+        <div>
+        <label for="picture">ajouter une image(JPG, PNG ou GIF | max. 2 Mo) :</label><br />
+        <input type="file" name="picture" id="picture" /><br />
+     </div>
+       
+        <div>
+           <label for="category">Catégorie :</label><br />
+            <select name="idCategory" id="category">
+            {foreach from=$myCategory item=category}
+           <option value="{$category.idCategory}">{$category.category}</option>
+            {/foreach}
+        </select>
+        </div>
+
+        <br />
+
+        <div>
+            <input type="text" id="tags">
+        </div>
+
+        <br />
+        
+        <button type="submit" onclick="valider">Ajouter</button>
+    </form>
+    <div id="error"></div>
+    <div id="correct"></div>
+  
+</body>
+</html>
