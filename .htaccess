@@ -1,0 +1,15 @@
+Options +FollowSymlinks
+RewriteEngine on
+RewriteRule ^index$ index.php
+RewriteRule ^login$ require/login.php
+RewriteRule ^search$ require/research.php
+RewriteRule ^logs$ require/logs.php
+RewriteRule ^logs/$ index.php
+RewriteRule ^search/$ index.php
+RewriteRule ^logs/([^/]+)$ require/logs.php?id=$1 [L]
+RewriteRule ^search/([^/]+)$ require/research.php?search=$1 [L]
+RewriteRule ^author$ require/fulllogs.php
+RewriteRule ^author/([^/]+)/([^/]+)/?$ require/fulllogs.php?offset=$1&page=$2 [NC,L]
+
+
+
